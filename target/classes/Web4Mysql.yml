@@ -1,0 +1,16 @@
+#这里是mysql本地机器的内网ip与端口
+rhost:
+  10.58.27.240
+rport:
+  3306
+#下面是跳板机的链接属性
+ssh_user:
+  root
+ssh_password:
+  5c6o@a*yCGzucSNNt!SR
+ssh_host:
+  154.209.252.193
+ssh_port:
+  22888
+
+

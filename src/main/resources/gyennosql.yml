@@ -1,0 +1,16 @@
+#这里是mysql本地机器的内网ip与端口
+rhost:
+  test2.gyenno.com
+rport:
+  33306
+#下面是跳板机的链接属性
+ssh_user:
+  sshdb
+ssh_password:
+  dot8knrzulevZgsc3F$*<~fv
+ssh_host:
+  t.gyenno.com
+ssh_port:
+  22222
+
+
