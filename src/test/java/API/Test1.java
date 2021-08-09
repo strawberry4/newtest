@@ -5,8 +5,11 @@ import Manager.*;
 import Utils.DateUtil;
 import Utils.ProxyUtils;
 import Utils.TestDynamicProxy;
+import cn.afterturn.easypoi.excel.annotation.Excel;
+import com.alibaba.excel.EasyExcel;
 import io.restassured.response.Response;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.InputStream;
@@ -191,7 +194,12 @@ public class Test1 {
 
     @Test
     void iotest(){
-
+        //String fileName = TestFileUtil.getPath() + "demo" + File.separator + "demo.xlsx";
+        System.out.println(File.separator);
+        String e="3232";
+        File  file = new File(this.getClass().getResource("").getFile());
+        System.out.println(file.getAbsolutePath());
+     //   EasyExcel.write(fileName, DemoData.class).sheet("模板").doWrite(data());
     }
 
 

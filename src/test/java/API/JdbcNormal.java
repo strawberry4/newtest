@@ -1,5 +1,7 @@
 package API;
 
+import org.junit.jupiter.api.Test;
+
 import java.sql.*;
 
 public class JdbcNormal {
@@ -45,4 +47,36 @@ public class JdbcNormal {
 
         conn.close();
     }
+
+
+@Test
+public  void test() throws ClassNotFoundException, SQLException {
+
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection conn = null;
+    boolean rs;
+    Statement st = null;
+    conn = DriverManager.getConnection("jdbc:mysql://t.gyenno.com:33309/information_schema?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC", "315241066439718570", "3mhofZ9Bn7sUzPRr0YeaH6j1");
+    st = conn.createStatement();
+    if(st !=null) {
+
+
+            ResultSet re=st.executeQuery("select * from information_schema.columns   where\n" +
+                    " table_schema = 'spoon_database'  \n" +
+
+                    " and  table_name like '%devices%'");
+
+            while (re.next())
+                System.out.println(re.getString(1));;   //返回该表的第一列的数据，2就是第二列，以此类推
+
+
+
+
+
+
+    }
+
+    conn.close();
+}
+
 }

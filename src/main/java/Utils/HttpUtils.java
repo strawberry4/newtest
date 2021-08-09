@@ -4,6 +4,8 @@ import io.restassured.RestAssured;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -37,6 +39,7 @@ public class HttpUtils {
     private RestAssuredConfig restAssuredConfig;
     private Response response;
     private String baseURL;
+
 
 
     /**

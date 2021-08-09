@@ -1,0 +1,20 @@
+## db.setting文件
+[test2]
+url = jdbc:mysql://t.gyenno.com:33309/spoon_database?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+user = 315241066439718570
+pass = 3mhofZ9Bn7sUzPRr0YeaH6j1
+driver = com.mysql.jdbc.Driver
+## 可选配置
+# 是否在日志中显示执行的SQL
+showSql = true
+# 是否格式化显示的SQL
+formatSql = false
+# 是否显示SQL参数
+showParams = true
+
+[dev]
+url = jdbc:mysql://t.gyenno.com:33306/spoon_database?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+user = develop
+pass = bmdy3htunvtwqjMwadaDf1oz
+
+
