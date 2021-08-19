@@ -111,7 +111,7 @@ public class HT_jdbc {
     }
 
     /**
-     * 将Entity集合转成json或者json列表
+     * 将Entity集合转成Map 或者Map列表
      *
      * @param <T>  Entity集合
      ** @return T
@@ -139,7 +139,7 @@ public class HT_jdbc {
      *
      * @param sql  查询语句
      * @param type  想要返回的类型
-     ** @return T
+     ** @return T   根据返回的结果是一条还是多条自动判断是否要转成对应的list集合
      */
     public  <T> T  select_get_value(String sql,Type type) throws SQLException {
 
@@ -160,20 +160,21 @@ public class HT_jdbc {
      *
      * @param tablename   想要查询的表
      * @param type      想要返回的类型
-     * @param term    查询时带的条件,形式为“字段：值”，“字段：值”,可以带多个条件
-     ** @return T
+     * @param term    查询时带的条件,形式为“字段：值”，“字段：值”,可以带多个条件;不传入的话就是不带条件查询
+     ** @return T    根据返回的结果是一条还是多条自动判断是否要转成对应的list集合
      */
 
     public  <T> T  find_get_value(String tablename,Type type,String... term) throws SQLException {
 
        Entity  inner_en = new Entity();
-        if(term == null || term.length==0) {
-            inner_en=Entity.create(tablename);
+        inner_en=Entity.create(tablename);
+        if(term != null && term.length > 0) {
 
-        }else{
+
             for (String inner_term:term) {
+                //把查询条件拆分成多个Entity添加进去
+                inner_en.set(inner_term.split(":")[0],inner_term.split(":")[1]);
 
-                inner_en=Entity.create(tablename).set(inner_term.split(":")[0],inner_term.split(":")[1]);
             }
         }
 
@@ -214,14 +215,18 @@ public class HT_jdbc {
 
    public static void main(String[] args) throws SQLException {
         HT_jdbc tl = new HT_jdbc("test2");
-        List<JSON> df = tl.find_get_value("linkuserdoctor",Type.Json,"doctorId:1010");
+        List<JSON> df = tl.find_get_value("devices",Type.Json,"model:TC20","bindStatus:1");
         System.out.println(df.size());
         System.out.println(df.get(0).toString());
 
 
         //可以根据返回类型是list还是json来判断是多条还是一条结果
        System.out.println(tl.find_get_value("linkuserdoctor", Type.Json, "doctorId:1010", "userid:111513").getClass());
-
+       List<JSON> df1= tl.select_get_value("select * from im_message_room_videotape where channelId  in  (select channelId from im_message_room where orderNumber='PO2021081713593331739')  group by channelId;", Type.Json);
+       for (JSON js1:df1
+            ) {
+           System.out.println(js1.toString());
+       }
 
    }
 
