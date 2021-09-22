@@ -1,6 +1,7 @@
 package Utils.Https;
 
 import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -32,7 +33,12 @@ public class HT_https {
                 "}";
 
         HttpRequest res=  HttpRequest.post(url).header("content-type", "application/json" ).header("cookie","JSESSIONID=86F4C29D789E86DDEA35B941FFA1E6EF").body(body);
+
+       //x-www-form-urlencoded形式的参数  HttpResponse httpResponse = HttpRequest.post(url).form(paramMap).timeout(time * 1000).execute();
+
         System.out.println(res.execute().body());
+        HttpResponse rsp=res.execute();
+
 
         //不设置请求头情况就使用：HttpUtil
         //System.out.println(HttpUtil.post(url,contents));
@@ -69,8 +75,8 @@ public class HT_https {
                 statusCode(200).
                 when().
                 post(url);
-        response.getBody().prettyPrint();
-
+          response.getBody().prettyPrint();
+        System.out.println(response.getHeader("mobile"));
 
 
 

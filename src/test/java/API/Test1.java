@@ -51,7 +51,15 @@ public class Test1 {
         Myinterface ad=testDynamicProxy.gettest(Myinterface.class);
         ad.sellMobilePhone("ttttt");*/
 
-
+        String[]  files;
+        List<String>  l1=new ArrayList();
+        l1.add("name");
+        l1.add("id");
+        files= (String[]) l1.toArray(new String[l1.size()]);
+        for (String fd:files
+             ) {
+            System.out.println(fd);
+        }
 
 
         // li.add(1);

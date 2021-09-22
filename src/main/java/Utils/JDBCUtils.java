@@ -92,6 +92,7 @@ public class JDBCUtils {
 		connection = JDBCConnectionFactory.jdbcConnection();
 		// 传入的select SQL语句
 		ps=connection.prepareStatement("select count(*) from users");
+		//ps=connection.prepareStatement("select count(*) from users",Statement.RETURN_GENERATED_KEYS);
 		rSet=ps.executeQuery();
 		while (rSet.next())
 		System.out.println(rSet.getString(1));

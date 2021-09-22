@@ -139,7 +139,7 @@ public  void tt(){
     System.out.println(parseStrToMd5L32("25d55ad283aa400af464c76d713c07ad"));//12345678
     System.out.println(parseStrToMd5L32("141c4e962fc9b5079dbfb10136e611ac"));//aa1234567
     System.out.println(parseStrToMd5L32("85bf5831e593431e882887e077400b7f"));//aa111111
-    System.out.println(parseStrToMd5L32("13010000030"));//13010000000
+    System.out.println(parseStrToMd5L32("123456"));//13010000000
     System.out.println(parseStrToMd5L32("ids=114794443862835200&key=2bb9966c702e49048defbd0074c77888"));//aa111111
     System.out.println(System.currentTimeMillis());
 }
